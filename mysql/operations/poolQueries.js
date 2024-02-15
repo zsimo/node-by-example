@@ -9,7 +9,8 @@ module.exports = async function (connection, howMany, sqlString, values) {
 
     const promises = [];
     for (let i = 0; i < howMany; i += 1) {
-        promises.push(queryJob(connection, sqlString, values));
+        const id = (((values[0]) * howMany) + i) + 1;
+        promises.push(queryJob(connection, sqlString, [id]));
     }
     return Promise.all(promises);
 
