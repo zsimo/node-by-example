@@ -3,9 +3,10 @@
 const mysql = require("mysql")
 const path = require("path");
 const config = require(path.resolve(process.cwd(), "config"));
+const constants = require(path.resolve(process.cwd(), "mysql", "constants"));
 
 const connection = mysql.createPool({
-    connectionLimit : 10, // 10 is the default
+    connectionLimit : constants.NUMBER_OF_PARALLEL_RUNS, // 10 is the default
     host: config.DB_HOST,
     user: config.DB_USERNAME,
     password: config.DB_PASSWORD,

@@ -2,5 +2,8 @@
   "dependencies": {
     "env-to-config": "^1.4.1",
     "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "service": "node ./serviceRunner.js"
   }
 }
