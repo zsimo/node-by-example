@@ -3,7 +3,7 @@
 const path = require("path");
 const process = require("process");
 
-//const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithEndingConnection")); // 22969
+// const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithEndingConnection")); // 22969
 //const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithBaseConnection")); // 7433
 const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithPoolConnection")); // 3398
 
