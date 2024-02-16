@@ -3,7 +3,6 @@
 const path = require("path");
 const process = require("process");
 const queryJob = require(path.resolve(process.cwd(), "mysql", "jobs", "query"));
-// const logJob = require(path.resolve(process.cwd(), "mysql", "jobs", "log"));
 
 module.exports = async function (connection, howMany, sqlString, values) {
 
@@ -14,4 +13,4 @@ module.exports = async function (connection, howMany, sqlString, values) {
     }
     return Promise.all(promises);
 
-}
+};
