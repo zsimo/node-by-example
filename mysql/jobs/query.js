@@ -9,6 +9,6 @@ module.exports = async function (connection, sqlString, values) {
         } catch (e) {
             response = e.response;
         }
-        console.log(response.length ? "Found" : "NotFound", " #id" + values[0]);
+        console.log(response && response.length ? "Found" : "NotFound", " #id" + values[0]);
 
 }
