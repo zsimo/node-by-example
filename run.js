@@ -5,13 +5,13 @@ const process = require("process");
 
 //const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithEndingConnection")); // 22969
 //const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithBaseConnection")); // 7433
-// const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithPoolConnection")); // 3398
-const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "services", "runParallelQueriesWithBaseConnection")); // 3398
+const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "features", "runQueriesWithPoolConnection")); // 3398
+//const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "services", "runParallelQueriesWithBaseConnection")); // 3398
 //const runQueriesFeature = require(path.resolve(process.cwd(), "mysql", "services", "runParallelQueriesWithEndingConnection")); // 3398
 
 
-const numberOfQueries = 100;
-const sqlString = "SELECT * FROM broadcasts WHERE id=?;";
+const numberOfQueries = 1000;
+const sqlString = "SELECT * FROM bics WHERE id=?;";
 
 
 async function main () {
