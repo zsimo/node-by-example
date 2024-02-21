@@ -360,26 +360,35 @@ module.exports = function () {
 ```js
 "use strict";
 
-const { Transform } = require("stream");
-const { scrypt } = require("crypto");
+const path = require("path");
+const fs = require("fs");
+const { pipeline } = require("stream");
+const { createGzip } = require("zlib");
+const mysqlStreamJob = require(path.resolve(process.cwd(), "jobs", "getMysqlQueryStream.js"));
+const encryptStreamJob = require(path.resolve(process.cwd(), "jobs", "encryptStream.js"));
+const writable = fs.createWriteStream('./out.txt.gz');
+const jsonToCsvStream = require("json-to-csv-stream");
+const sqlString = "SELECT * FROM bics;";
 
-module.exports = function () {
-    return new Transform({
-        decodeStrings: false,
-        encoding: 'hex',
-        transform (chunk, enc, next) {
-            scrypt(chunk, 'a-salt', 32, (err, key) => {
-                if (err) {
-                    next(err)
-                    return
-                }
-                next(null, key)
-            })
-        },
-        final (cb) {
-            // this.push('\n]\n')
-            cb();
+async function main () {
+
+    pipeline(
+        await mysqlStreamJob(sqlString),
+        jsonToCsvStream(),
+        encryptStreamJob(),
+        createGzip(),
+        writable,
+        (err) => {
+            if (err) {
+                console.error('Pipeline failed', err);
+                process.exit(1);
+            } else {
+                console.log(`Completed`);
+                process.exit(0);
+            }
         }
-    })
-};
+    )
+
+}
+main();
 ```
