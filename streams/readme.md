@@ -193,6 +193,57 @@ async function main () {
 }
 main();
 ```
+Download and modify a file using pipeline
+- create `jobs/uppercaseStream.js`
+```js
+"use strict";
+
+const { Transform } = require("stream");
+
+module.exports = function () {
+    return new Transform({
+        transform (chunk, enc, next) {
+            next(null, chunk.toString().toUpperCase());
+        },
+        final (cb) {
+            cb();
+        }
+    })
+};
+```
+Use it
+```js
+"use strict";
+
+const path = require("path");
+const fs = require("fs");
+const { pipeline } = require("stream");
+const uppercaseStreamJob = require(path.resolve(process.cwd(), "jobs", "uppercaseStream.js"));
+const getHttpStreamJob = require(path.resolve(process.cwd(), "jobs", "getHttpStream.js"));
+const writable = fs.createWriteStream('./out.txt')
+const url = "https://www.gutenberg.org/files/2701/old/moby10b.txt";
+
+async function main () {
+
+    pipeline(
+        await getHttpStreamJob(url),
+        uppercaseStreamJob(),
+        writable,
+        (err) => {
+            if (err) {
+                console.error('Pipeline failed', err);
+                process.exit(1);
+            } else {
+                console.log(`Completed`);
+                process.exit(0);
+            }
+        }
+    )
+
+}
+main();
+```
+
 Export a mysql table to txt file
 - Create `jobs/queryStream.js` 
 ```js
