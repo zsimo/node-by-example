@@ -36,5 +36,6 @@ module.exports = {
             );
         });
 
-    }
+    },
+    connection: connection
 };
