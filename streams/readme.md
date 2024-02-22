@@ -31,7 +31,7 @@ readable.on('data', (chunk) => {
 });
 ```
 Create readable stream from http request
-- create `jobs/getHttpStream.js`
+- create `jobs/httpStream.js`
 ```js
 const axios = require("axios");
 
@@ -44,12 +44,12 @@ module.exports = async function () {
     return response.data;
 };
 ```
-- use `jobs/getHttpStream.js`
+- use `jobs/httpStream.js`
 ```js
 "use strict";
 
 const path = require("path");
-const getHttpStreamJob = require(path.resolve(process.cwd(), "jobs", "getHttpStream.js"));
+const getHttpStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "httpStream.js"));
 
 async function main () {
 
@@ -135,7 +135,7 @@ Download file
 
 const path = require("path");
 const fs = require("fs");
-const getHttpStreamJob = require(path.resolve(process.cwd(), "jobs", "getHttpStream.js"));
+const getHttpStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "httpStream.js"));
 const writable = fs.createWriteStream('./out.txt')
 
 async function main () {
@@ -170,7 +170,7 @@ module.exports = async function (url) {
 const path = require("path");
 const fs = require("fs");
 const { pipeline } = require("stream");
-const getHttpStreamJob = require(path.resolve(process.cwd(), "jobs", "getHttpStream.js"));
+const getHttpStreamJob = require(path.resolve(process.cwd(), "strea", "jobs", "httpStream.js"));
 const writable = fs.createWriteStream('./out.txt')
 const url = "https://www.gutenberg.org/files/2701/old/moby10b.txt";
 
@@ -219,7 +219,7 @@ const path = require("path");
 const fs = require("fs");
 const { pipeline } = require("stream");
 const uppercaseStreamJob = require(path.resolve(process.cwd(), "jobs", "uppercaseStream.js"));
-const getHttpStreamJob = require(path.resolve(process.cwd(), "jobs", "getHttpStream.js"));
+const getHttpStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "httpStream.js"));
 const writable = fs.createWriteStream('./out.txt')
 const url = "https://www.gutenberg.org/files/2701/old/moby10b.txt";
 
@@ -320,7 +320,7 @@ yarn add json-to-csv-stream
 const path = require("path");
 const fs = require("fs");
 const { pipeline } = require("stream");
-const mysqlStreamJob = require(path.resolve(process.cwd(), "jobs", "queryStream.js"));
+const mysqlStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "queryStream.js"));
 const writable = fs.createWriteStream('./out.csv');
 const jsonToCsvStream = require("json-to-csv-stream");
 const sqlString = "SELECT * FROM my_table;";
@@ -415,8 +415,8 @@ const path = require("path");
 const fs = require("fs");
 const { pipeline } = require("stream");
 const { createGzip } = require("zlib");
-const mysqlStreamJob = require(path.resolve(process.cwd(), "jobs", "getMysqlQueryStream.js"));
-const encryptStreamJob = require(path.resolve(process.cwd(), "jobs", "encryptStream.js"));
+const mysqlStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "queryStream.js"));
+const encryptStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "encryptStream.js"));
 const writable = fs.createWriteStream('./out.txt.gz');
 const jsonToCsvStream = require("json-to-csv-stream");
 const sqlString = "SELECT * FROM bics;";
