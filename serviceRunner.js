@@ -6,6 +6,12 @@ const { readdir } = require("fs/promises");
 const mysqlServicesDirectory = path.resolve(process.cwd(), "mysql", "services");
 const streamsServicesDirectory = path.resolve(process.cwd(), "streams", "services");
 const args = process.argv.slice(2);
+const { exec } = require('node:child_process');
+
+const childProcess = exec("while :; do du -sh  ./ ; sleep 1; done;");
+childProcess.stdout.on('data', (data) => {
+    process.stdout.write(data);
+});
 
 const serviceName = path.parse(args[0]).name;
 
