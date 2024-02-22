@@ -218,7 +218,7 @@ Use it
 const path = require("path");
 const fs = require("fs");
 const { pipeline } = require("stream");
-const uppercaseStreamJob = require(path.resolve(process.cwd(), "jobs", "uppercaseStream.js"));
+const uppercaseStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "uppercaseStream.js"));
 const getHttpStreamJob = require(path.resolve(process.cwd(), "streams", "jobs", "httpStream.js"));
 const writable = fs.createWriteStream('./out.txt')
 const url = "https://www.gutenberg.org/files/2701/old/moby10b.txt";
