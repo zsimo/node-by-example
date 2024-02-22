@@ -1,7 +1,7 @@
 "use strict";
 
 const path = require("path");
-const baseConnection = require(path.resolve(process.cwd(), "mysql", "connections", "baseConnection"));
+const baseConnection = require(path.resolve(process.cwd(), "drivers", "mysql", "baseConnection"));
 const stream = require("stream");
 const util = require("util");
 

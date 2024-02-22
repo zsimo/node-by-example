@@ -3,7 +3,7 @@
 const path = require("path");
 const process = require("process");
 const queryJob = require(path.resolve(process.cwd(), "mysql", "jobs", "query"));
-const connection = require(path.resolve(process.cwd(), "mysql", "connections", "baseConnection"));
+const connection = require(path.resolve(process.cwd(), "drivers", "mysql", "baseConnection"));
 
 module.exports = async function (howMany, sqlString) {
 
