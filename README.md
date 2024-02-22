@@ -20,5 +20,7 @@ How to use:
 ```sh
     npm run service <service name>
     npm run service downloadTransform
+    #or
+    node serviceRunner.js downloadTransform
 ```
 
