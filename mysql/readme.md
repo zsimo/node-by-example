@@ -71,7 +71,7 @@ Create `config.js` file
 ```js
 module.exports = require("env-to-config")();
 ```
-Update d`rivers/mysql.js` file using `.env` credentials
+Update `drivers/mysql.js` file using `.env` credentials
 ```js
 "use strict";
 

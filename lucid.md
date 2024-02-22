@@ -1,6 +1,6 @@
 ### [Lucid Architecture](https://docs.lucidarch.dev/principles/) Overall view
 ### Services (FaaS)
-Services or `Function-as-a-Service` (FaaS) functions that represent a single system functionality
+Services or `Function-as-a-Service` (FaaS) are functions that represent a single system functionality, a single procedure. A Service `(FaaS)` must be invoked by someone else. E.g.: a cmd line script can not be a Service `(FaaS)`, but a cmd line script can invoke a Service `(FaaS)`. E.g.: a http server can not be a Service `(FaaS)`, but a server route can invoke a Service `(FaaS)`. Service `(FaaS)` shall not call other Service `(FaaS)`.
 ```
 Services
     |__Features
