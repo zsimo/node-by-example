@@ -5,6 +5,7 @@ Ready to use `node.js` scripts, using [Lucid Architecture](lucid.md), divided by
 
 Available Services `(FaaS)`:
 - mysql
+  - createDummyTable.js
   - runParallelQueriesWithBaseConnection.js
   - runParallelQueriesWithEndingConnection.js
   - runParallelQueriesWithPoolConnection.js
