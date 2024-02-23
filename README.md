@@ -3,7 +3,7 @@ Ready to use `node.js` scripts, using [Lucid Architecture](lucid.md), divided by
 - [mysql](mysql/readme.md)
 - [streams](streams/readme.md)
 
-Available Service `(FaaS)`:
+Available Services `(FaaS)`:
 - mysql
   - runParallelQueriesWithBaseConnection.js
   - runParallelQueriesWithEndingConnection.js
