@@ -1,5 +1,5 @@
 # node-by-example
-Ready to use `node.js` scripts using [Lucid Architecture](lucid.md) divided by sections:
+Ready to use `node.js` scripts, using [Lucid Architecture](lucid.md), divided by sections:
 - [mysql](mysql/readme.md)
 - [streams](streams/readme.md)
 
