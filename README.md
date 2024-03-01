@@ -15,7 +15,10 @@ Available Services `(FaaS)`:
   - downloadEncrypt.js
   - downloadTransform.js
   - downloadTransformUpload.js
+  - downloadUpload.js
   - mysqlCsvZip.js
+  - transformLine.js
+  - upload.js
 
 How to use:
 ```sh

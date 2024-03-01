@@ -27,7 +27,7 @@ module.exports = async function (fileToBeUploaded = file,  serverUrl = config.UP
         readableStream.pipe(postRequest);
 
         //var upload_progress = 0;
-        // upload.on("data", function (chunk) {
+        // postRequest.on("data", function (chunk) {
         //     upload_progress += chunk.length
         //     console.log(new Date(), upload_progress);
         // })
