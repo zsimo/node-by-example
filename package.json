@@ -3,7 +3,8 @@
     "axios": "^1.6.7",
     "env-to-config": "^1.4.1",
     "json-to-csv-stream": "^1.1.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
   },
   "scripts": {
     "service": "node ./serviceRunner.js"
