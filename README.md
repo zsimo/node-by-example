@@ -28,3 +28,7 @@ How to use:
     node serviceRunner.js downloadTransform
 ```
 
+
+https://www.jsv9000.app/
+
+http://latentflip.com/loupe/
