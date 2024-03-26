@@ -47,3 +47,6 @@ graph TD
 
 
 Callbacks are functions that are passed as arguments to other functions
+
+
+https://tech.jotform.com/unraveling-the-javascript-execution-pipeline-understanding-v8-event-loop-and-libuv-for-4da6789fcfc2
