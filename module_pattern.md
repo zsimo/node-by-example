@@ -1,6 +1,8 @@
 ## Module Pattern
 
-The module pattern allows to split up code into smaller, reusable pieces. Every file in `Node.js` is a`module`. Module pattern implements 2 simple rules:
+The module pattern allows to split up code into smaller, reusable pieces. Every file in `Node.js` is treated as a separate `module`.
+
+Module pattern implements 2 simple rules:
 1. the code declared in a module `runs only once`, regardless of how many times the module is required. 
    ```js
    // a.js file
@@ -37,6 +39,7 @@ The module pattern allows to split up code into smaller, reusable pieces. Every 
    // index.js file
    "use strict";
 
+   // same as include the same module in multiple files
    const cacheA = require("./a.js");
    const cacheB = require("./a.js");
 
