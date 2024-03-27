@@ -2,6 +2,8 @@
 ## Node.js
 [Node.js](https://nodejs.org/en) is built on top of the [V8 JavaScript engine](https://v8.dev/), which is responsible for executing JavaScript code. However, Node.js extends the functionality of the V8 engine by providing APIs for I/O, `networking`, and other `system operations`. [Libuv](https://docs.libuv.org/en/v1.x/) plays a crucial role in this extension by powering the `event loop` and handling asynchronous I/O operations.
 
+![Node platform](./assets/v8-libuv.png "Node platform")
+
 
 ### V8
 V8 is Google’s open source high-performance JavaScript `engine`, written in `C++`. It is used in Chrome and in Node.js, among others.
@@ -13,18 +15,25 @@ V8 `compiles` and `executes` JavaScript source code, handles memory allocation f
 V8 enables any `C++` application to expose its own objects and functions to JavaScript code.
 
 ### Libuv
-Libuv is a multi-platform C library that provides support for asynchronous I/O based on `event loops`. It was initially developed for Node.js to handle the event-driven architecture, but it has since been adopted by other projects due to its performance and efficiency. Libuv's primary features include:
+Libuv is a multi-platform `C` library that provides support for asynchronous I/O based on `event loops`.
+
+It `implements all of the asynchronous behaviors of the platform`.
+
+It was initially developed for Node.js to handle the event-driven architecture, but it has since been adopted by other projects due to its performance and efficiency. Libuv's primary features include:
 - Event loop 
 - Asynchronous file and file system operations 
 - Asynchronous TCP and UDP sockets 
 - Child processes
-- Thread pool 
+- Thread pool (4 threads by default)
 - Timers, signals, and polls
 
-By handling all these features, libuv enables Node.js to work as a single-threaded, non-blocking, and event-driven platform.
 
 ### Event loop
-Event loop has one very simple job: it looks at the stack, it looks at the task queue. If the stack is empty, it takes the first thing on the queue and push it on the stack.
+The Event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that `JavaScript (V8) is single-threaded` — by offloading operations to the system kernel whenever possible.
+
+Since most `modern kernels are multi-threaded`, they can handle multiple operations executing in the background. When one of these operations completes, the kernel tells Node.js so that the appropriate `callback` may be added to the poll `queue` to eventually be executed.
+
+In practice, Event loop has one very simple job: it looks at the stack, it looks at the task queue. If the stack is empty, it takes the first thing on the queue and push it on the stack.
 
 
 
