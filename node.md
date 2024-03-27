@@ -37,7 +37,6 @@ Libuv API `essential concepts` [see here](https://tech.jotform.com/unraveling-th
 - `Thread pool`: Libuv assigns all the heavy work to a pool of worker threads (`UV_THREADPOOL_SIZE`= 4, by default). This thread pool is responsible for handling tasks like `file I/O` and `DNS lookup`
 
 
-
 ### Event loop
 The Event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that `JavaScript (V8) is single-threaded` — by offloading operations to the system kernel whenever possible.
 
@@ -46,6 +45,10 @@ Since most `modern kernels are multi-threaded`, they can handle multiple operati
 The Event loop is `semi-infinite` loop: it's considered alive if there are active handles or requests. If there are no active tasks, the loop will end.
 
 In practice, Event loop has one very simple job: it looks at the stack, it looks at the task queue. If the stack is empty, it takes the first thing on the queue and push it on the stack.
+
+
+#### Transferring outcomes from `Libuv` to `V8`
+Once `libuv` finishes executing the asynchronous function, it adds the corresponding `callback` to the `task queue(s)` (`FIFO` first-in, first-out). The `event loop`, responsible for managing the execution flow, if the `call stack is empty`, retrieves an event from the `task queue` and pushes it onto the `call stack` (LIFO, last-in, first-out). This allows `V8` to effectively manage and handle asynchronous operations `without blocking the main thread`.
 
 ---
 
