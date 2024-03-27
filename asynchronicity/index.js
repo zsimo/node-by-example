@@ -5,6 +5,7 @@ const process = require("process");
 
 const fibonacciSyncService = require(path.resolve(process.cwd(), "asynchronicity", "services", "fibonacciSync"));
 const fibonacciAsyncService = require(path.resolve(process.cwd(), "asynchronicity", "services", "fibonacciAsync"));
+const setTimeoutIsNotAccurateService = require(path.resolve(process.cwd(), "asynchronicity", "services", "setTimeoutIsNotAccurate"));
 
 
 const target = 40;
@@ -13,8 +14,10 @@ async function main () {
 
     const start = Date.now();
 
-    console.log(fibonacciSyncService(target));
-    console.log(fibonacciSyncService(target));
+    await setTimeoutIsNotAccurateService();
+
+    // console.log(fibonacciSyncService(target));
+    // console.log(fibonacciSyncService(target));
 
     // const fibonacciPromise01 = fibonacciAsyncService(target);
     // const fibonacciPromise02 = fibonacciAsyncService(target);

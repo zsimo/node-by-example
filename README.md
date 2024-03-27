@@ -27,8 +27,3 @@ How to use:
     #or
     node serviceRunner.js downloadTransform
 ```
-
-
-https://www.jsv9000.app/
-
-http://latentflip.com/loupe/

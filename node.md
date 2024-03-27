@@ -10,7 +10,7 @@
 ### V8
 V8 is Google’s open source high-performance JavaScript `engine`, written in `C++`. It is used in Chrome and in Node.js, among others.
 
-V8 implements [ECMAScript](https://tc39.es/ecma262/), providing all the data types, operators, objects and functions specified in the ECMA standard.
+V8 implements [ECMAScript](https://tc39.es/ecma262/) specifications, providing all the data types, operators, objects and functions specified in the ECMA standard.
 
 V8 `parses`,  `compiles` and `executes` JavaScript source code, handles memory allocation for objects, and garbage collects objects it no longer needs.
 
@@ -31,13 +31,26 @@ It was initially developed for Node.js to handle the event-driven architecture, 
 - Thread pool (4 threads by default)
 - Timers, signals, and polls
 
+Libuv API `essential concepts` [see here](https://tech.jotform.com/unraveling-the-javascript-execution-pipeline-understanding-v8-event-loop-and-libuv-for-4da6789fcfc2):
+- `Handles`: These represent long-lived objects such as timers, signals, and TCP/UDP sockets. Once a task is completed, handles will trigger the appropriate `callbacks`. The `event loop` will `keep running` as long as a handle remains active
+- `Requests`: Represent short-lived operations, such as reading from or writing to a file or establishing network connection. Like handles, `active requests will keep the event loop alive`
+- `Thread pool`: Libuv assigns all the heavy work to a pool of worker threads (`UV_THREADPOOL_SIZE`= 4, by default). This thread pool is responsible for handling tasks like `file I/O` and `DNS lookup`
+
+
 
 ### Event loop
 The Event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that `JavaScript (V8) is single-threaded` — by offloading operations to the system kernel whenever possible.
 
 Since most `modern kernels are multi-threaded`, they can handle multiple operations executing in the background. When one of these operations completes, the kernel tells Node.js so that the appropriate `callback` may be added to the poll `queue` to eventually be executed.
 
+The Event loop is `semi-infinite` loop: it's considered alive if there are active handles or requests. If there are no active tasks, the loop will end.
+
 In practice, Event loop has one very simple job: it looks at the stack, it looks at the task queue. If the stack is empty, it takes the first thing on the queue and push it on the stack.
+
+---
+
+Online JS internals visualizers: [Loupe](http://latentflip.com/loupe/) and [Jsv](https://www.jsv9000.app/)
+
 
 
 
