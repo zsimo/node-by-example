@@ -1,7 +1,8 @@
 
 ## Node.js
 [Node.js](https://nodejs.org/en) is an open-source and cross-platform JavaScript runtime environment.
- It's built on top of the [V8 JavaScript engine](https://v8.dev/), which is responsible for executing JavaScript code. However, Node.js extends the functionality of the V8 engine by providing APIs for I/O, `networking`, and other `system operations`. [Libuv](https://docs.libuv.org/en/v1.x/) plays a crucial role in this extension by powering the `event loop` and handling asynchronous I/O operations.
+
+ It's built on top of the [V8](https://v8.dev/) engine, which is responsible for executing JavaScript code. However, Node.js extends the functionality of the V8 engine by providing APIs for I/O, `networking`, and other `system operations`. [Libuv](https://docs.libuv.org/en/v1.x/) plays a crucial role in this extension by powering the `event loop` and handling asynchronous I/O operations.
 
 ![Node platform](./assets/v8-libuv.png "Node platform")
 
