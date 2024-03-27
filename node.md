@@ -1,6 +1,7 @@
 
 ## Node.js
-[Node.js](https://nodejs.org/en) is built on top of the [V8 JavaScript engine](https://v8.dev/), which is responsible for executing JavaScript code. However, Node.js extends the functionality of the V8 engine by providing APIs for I/O, `networking`, and other `system operations`. [Libuv](https://docs.libuv.org/en/v1.x/) plays a crucial role in this extension by powering the `event loop` and handling asynchronous I/O operations.
+[Node.js](https://nodejs.org/en) is an open-source and cross-platform JavaScript runtime environment.
+ It's built on top of the [V8 JavaScript engine](https://v8.dev/), which is responsible for executing JavaScript code. However, Node.js extends the functionality of the V8 engine by providing APIs for I/O, `networking`, and other `system operations`. [Libuv](https://docs.libuv.org/en/v1.x/) plays a crucial role in this extension by powering the `event loop` and handling asynchronous I/O operations.
 
 ![Node platform](./assets/v8-libuv.png "Node platform")
 
@@ -10,9 +11,11 @@ V8 is Google’s open source high-performance JavaScript `engine`, written in `C
 
 V8 implements [ECMAScript](https://tc39.es/ecma262/), providing all the data types, operators, objects and functions specified in the ECMA standard.
 
-V8 `compiles` and `executes` JavaScript source code, handles memory allocation for objects, and garbage collects objects it no longer needs.
+V8 `parses`,  `compiles` and `executes` JavaScript source code, handles memory allocation for objects, and garbage collects objects it no longer needs.
 
 V8 enables any `C++` application to expose its own objects and functions to JavaScript code.
+
+`Compilation`: JavaScript is generally considered an `interpreted` language, but modern JavaScript engines no longer just interpret JavaScript, they compile it. JavaScript is internally `compiled` by V8 with `just-in-time (JIT)` compilation to speed up the execution.
 
 ### Libuv
 Libuv is a multi-platform `C` library that provides support for asynchronous I/O based on `event loops`.
