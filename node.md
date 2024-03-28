@@ -55,6 +55,29 @@ Once `libuv` finishes executing the asynchronous function, it adds the correspon
 Online JS internals visualizers: [Loupe](http://latentflip.com/loupe/) and [Jsv](https://www.jsv9000.app/). See also [Frontendmasters Advanced Web Development Quiz](https://frontendmasters.com/courses/web-dev-quiz/q4-call-stack-event-loop/).
 
 
+### Async flow
+```mermaid
+sequenceDiagram
+    participant V8
+    participant Call Stack
+    participant Libuv
+    participant Thread Pool
+    participant Callback Queue
+    participant Event Loop
+
+    V8->>Call Stack: Node.js function execution
+    Call Stack->>Libuv: Start Async Task 1 passing a callback
+    V8->>Call Stack: Node.js another function execution
+
+    Libuv->>Thread Pool: Execute Task 1 in Background
+
+    Thread Pool->>Callback Queue: Task 1 completed, add callback function for Task 1 to Queue
+    Callback Queue->>Event Loop: Process Callbacks
+    Event Loop->>Call Stack: Push Callback for Task 1
+    Call Stack->>V8: Process Task 1 Callback
+```
+
+
 
 
 single threaded runtime, has a single call stack, it can do one thing at the time, it can run one piece of code at the time
@@ -71,9 +94,6 @@ graph TD
         Node.js_APIs --> NPM_Modules
     end
 ```
-
-
-
 
 Callbacks are functions that are passed as arguments to other functions
 
