@@ -65,16 +65,16 @@ sequenceDiagram
     participant Callback Queue
     participant Event Loop
 
-    V8->>Call Stack: Node.js function execution
-    Call Stack->>Libuv: Start Async Task 1 passing a callback
-    V8->>Call Stack: Node.js another function execution
+    V8->>Call Stack: Execute task 1 function (containing async operation and a callback function)
+    Call Stack->>Libuv: Start task 1 async operation passing the callback to libuv
+    V8->>Call Stack: Execute task 2 function (containing async operation and a callback function)
 
-    Libuv->>Thread Pool: Execute Task 1 in Background
+    Libuv->>Thread Pool: Execute task 1 operation in Background
 
-    Thread Pool->>Callback Queue: Task 1 completed, add callback function for Task 1 to Queue
-    Callback Queue->>Event Loop: Process Callbacks
-    Event Loop->>Call Stack: Push Callback for Task 1
-    Call Stack->>V8: Process Task 1 Callback
+    Thread Pool->>Callback Queue: task 1 operation completed: add the callback function for to the Callback queue(s)
+    Callback Queue->>Event Loop: Process callbacks (if the Call Stack is empty)
+    Event Loop->>Call Stack: If the Call Stack is empty, push callback function for task 1
+    Call Stack->>V8: Execute task 1 callback function
 ```
 
 
