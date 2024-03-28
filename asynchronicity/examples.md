@@ -2,11 +2,27 @@
 
 `setTimeout` function is part of the `Web APIs` in the browser or `Libuv` in node.js, is not defined in the ECMAScript specification.
 ```js
-setTimeout(function timeout() {
-    console.log("second");
+setTimeout(function print2timeout() {
+    console.log("2");
 }, 5000);
 
-console.log("first");
+console.log("1");
+```
+
+
+`event loop` can't pull callbacks from queues until the `call stack is empty`
+```js
+function sleepSync (msec) {
+    let i = 0
+    const start = Date.now()
+    while (Date.now() - start < msec) { i++ }
+    return i
+}
+setTimeout(function printAfter() {
+    console.log("after");
+}, 0);
+
+sleepSync(5000);
 ```
 
 
