@@ -7,5 +7,6 @@ const fibonacciJob = require(path.resolve(process.cwd(), "asynchronicity", "jobs
 process.on('message', function(n) {
 
     process.send(fibonacciJob(n));
+    process.disconnect();
 
 });
