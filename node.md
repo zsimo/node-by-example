@@ -45,6 +45,7 @@ Since most `modern kernels are multi-threaded`, they can handle multiple operati
 The Event loop is `semi-infinite` loop: it's considered alive if there are active handles or requests. If there are no active tasks, the loop will end.
 
 In practice, Event loop has one very simple job: it looks at the stack, it looks at the task queue. If the stack is empty, it takes the first thing on the queue and push it on the stack.
+![Event loop](./assets/event-loop.gif "Event loop")
 
 
 #### Transferring outcomes from `Libuv` to `V8`
