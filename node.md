@@ -60,11 +60,11 @@ Online JS internals visualizers: [Loupe](http://latentflip.com/loupe/) and [Jsv]
 ```mermaid
 sequenceDiagram
     participant V8
-    participant Call Stack
+    participant Call Stack as Call Stack (V8)
     participant Libuv
-    participant Thread Pool
-    participant Callback Queue
-    participant Event Loop
+    participant Thread Pool as Thread Pool (Libuv)
+    participant Callback Queue as Callback Queue (Libuv)
+    participant Event Loop as Event Loop (Libuv)
 
     V8->>Call Stack: Execute task 1 function (containing async operation and a callback function)
     Call Stack->>Libuv: Start task 1 async operation passing the callback to libuv
@@ -86,15 +86,6 @@ single threaded runtime, has a single call stack, it can do one thing at the tim
 
 https://codedamn.com/news/nodejs/libuv-architecture
 
-```mermaid
-graph TD
-    subgraph Node.js Architecture
-        JavaScript(V8) --> Event_Loop
-        Libuv --> Event_Loop
-        Event_Loop --> Node.js_APIs
-        Node.js_APIs --> NPM_Modules
-    end
-```
 
 Callbacks are functions that are passed as arguments to other functions
 

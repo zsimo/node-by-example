@@ -9,7 +9,7 @@ Module pattern implements 2 simple rules:
    console.log("a");
    ```
    ```js
-    // index.js ile
+    // index.js file
    require("./a.js");
    require("./a.js");
    // log "a" only once

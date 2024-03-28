@@ -53,7 +53,7 @@ server.listen(8000);
 sleepAsync with promise
 ```js
 function sleepAsync (msec) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function executor (resolve, reject) {
         setTimeout(function () {
             resolve();
         }, msec);
@@ -77,7 +77,7 @@ server.listen(8000);
 sleepAsync with promise (async/await)
 ```js
 function sleepAsync (msec) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function executor(resolve, reject) {
         setTimeout(function () {
             resolve();
         }, msec);

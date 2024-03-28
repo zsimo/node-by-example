@@ -1,4 +1,20 @@
-The `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value; it's a `placeholder` for a future value. It's a `asynchronous coding pattern`.
+
+regular callback function returns nothing
+```js
+const fs = require("fs");
+const result = fs.readFile(__filename, function (err, fileContent) {
+    console.log(fileContent.toString())
+});
+console.log(result); // undefined
+```
+
+promise returns a placeholder for a future value, as a wrapper around a future value, 
+```js
+const fs = require("fs").promises;
+const result = fs.readFile(__filename);
+console.log(result); // Promise { <pending> }
+```
 
 A Promise is in one of these states:
 - `pending`: initial state, neither fulfilled nor rejected
