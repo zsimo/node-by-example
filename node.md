@@ -77,17 +77,3 @@ sequenceDiagram
     Event Loop->>Call Stack: If the Call Stack is empty, push callback function for task 1
     Call Stack->>V8: Execute task 1 callback function
 ```
-
-
-
-
-single threaded runtime, has a single call stack, it can do one thing at the time, it can run one piece of code at the time
-
-
-https://codedamn.com/news/nodejs/libuv-architecture
-
-
-Callbacks are functions that are passed as arguments to other functions
-
-
-https://tech.jotform.com/unraveling-the-javascript-execution-pipeline-understanding-v8-event-loop-and-libuv-for-4da6789fcfc2
