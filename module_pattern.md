@@ -59,3 +59,15 @@ By doing this, Node.js achieves a few things:
 - It helps to provide some global-looking variables that are actually specific to the module, such as:
   - The `module` and `exports` objects that the implementor can use to export values from the module.
   - The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+
+
+### Module Resolution Algorithm
+```js
+require("./file");
+```
+The engine search for:
+1. file.js file
+2. file.json file
+3. file/index.js file
+4. file/index.json file
+5. file/package.json -> main key: "file2.js"
