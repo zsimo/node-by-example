@@ -1,12 +1,75 @@
 
+### Synchronous code:
+- in synchronous code, tasks are executed sequentially, one after the other.
+- Each task must wait for the previous one to complete before it starts.
+- If a task takes a long time to complete (such as reading a large file or making a network request), it blocks the execution of subsequent tasks, causing the entire program to wait.
+```js
+"use strict";
 
+function sleep (msec) {
+    let i = 0
+    const start = Date.now()
+    while (Date.now() - start < msec) { i++ }
+    return i
+}
+
+function uno () {
+    console.log(1);
+}
+function due () {
+    console.log(2);
+}
+
+
+const start = Date.now();
+uno();
+sleep(5000);
+due();
+console.log("time", Date.now() - start);
+```
+```mermaid
+gantt
+    TITLE Sync
+    dateFormat HH:mm
+    axisFormat %H:%M:%S
+    Start : 17:48,
+    Task A : 2s
+    Task B : 5s
+    Task C : 2s
+```
+
+### Asynchronous code:
+- Asynchronous code allows for concurrent execution of tasks without waiting for the previous task to complete
+- While waiting for I/O operations to complete, the CPU can continue executing other tasks, maximizing resource utilization
+- Asynchronous code allows the program to remain responsive while performing time-consuming operations (e.g.: http server, or web page)
 `setTimeout` function is part of the `Web APIs` in the browser or `Libuv` in node.js, is not defined in the ECMAScript specification.
 ```js
-setTimeout(function print2timeout() {
-    console.log("2");
-}, 5000);
+"use strict";
 
-console.log("1");
+function sleep (msec) {
+    let i = 0
+    const start = Date.now()
+    while (Date.now() - start < msec) { i++ }
+    return i
+}
+
+function uno () {
+    console.log(1);
+}
+function due () {
+    console.log(2);
+}
+
+
+const start = Date.now();
+uno();
+
+setTimeout(function () {
+    sleep(5000);
+    console.log("time", Date.now() - start);
+},0);
+
+due();
 ```
 
 
@@ -26,7 +89,7 @@ sleepSync(5000);
 ```
 
 
-sleepSync
+### Sync Http server example
 ```js
 function sleepSync (msec) {
     let i = 0
@@ -50,7 +113,7 @@ server.listen(8000);
 ```
 
 
-sleepAsync with promise
+### Async Http server example
 ```js
 function sleepAsync (msec) {
     return new Promise(function executor (resolve, reject) {
@@ -74,7 +137,7 @@ const server = http.createServer((req, res) => {
 server.listen(8000);
 ```
 
-sleepAsync with promise (async/await)
+### Async Http server example with promise (async/await)
 ```js
 function sleepAsync (msec) {
     return new Promise(function executor(resolve, reject) {
